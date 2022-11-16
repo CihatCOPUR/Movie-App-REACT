@@ -6,11 +6,11 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [pasword, setPasword] = useState("");
+  const [password, setPassword] = useState("");
 
 const handleSubmit =(e)=>{
   e.preventDefault();
- createUser(email,pasword)
+ createUser(email,password);
 }
 
   return (
@@ -70,7 +70,7 @@ const handleSubmit =(e)=>{
               type="password"
               required
               className="relative w-[100%] inputbox-input bg-transparent outline-none text-[#23242a] font-[1em] tracking-[0.05em]"
-              onChange={(e)=>setPasword(e.target.value)}
+              onChange={(e)=>setPassword(e.target.value)}
             />
             <span className="absolute left-0 inputbox-span font-[1em] text-[#8f8f8f] tracking-[0.05em]">
               Password
