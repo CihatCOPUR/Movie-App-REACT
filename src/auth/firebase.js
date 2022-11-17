@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Navigate } from "react-router-dom";
 
 //* Your web app's Firebase configuration
 
@@ -18,15 +19,26 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
  const auth = getAuth(app);
 
-export const createUser = async (email,password) => {
+export const createUser = async (email,password,navigate) => {
   try {
     let userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+    navigate("/");
     console.log(userCredential);
   } catch (error) {
-    console.log(error.message);
+    alert(error.message);
   }
 };
+
+export const signIn = async (email , password,navigate) => {
+  try {
+    await signInWithEmailAndPassword(auth,email,password)
+ 
+  navigate("/") }
+  catch (error) {
+    console.log(error.message)
+  }
+}
